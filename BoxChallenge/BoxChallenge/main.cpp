@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <iostream>
 
 using namespace std;
 //Implement the class Box
@@ -43,9 +44,19 @@ public:
     int getBreadth() { return b; }
     int getHeight() { return h; }
     
+    long calculateVolume() { return l*b*h; }
+    
+    bool operator<(Box& b);
+    ostream& operator<<(ostream& out) { out << this->getLength() << " " << this->getBreadth() << " " << this->getHeight(); return out;}
+    
 };
 
-
+bool Box::operator<(Box& b) {
+    if (this->getLength() < b.getLength()) { return true; }
+    else if (this->getBreadth() < b.getBreadth() and this->getLength() == b.getLength()) { return true; }
+    else if (this->getHeight() < b.getHeight() and this->getLength() == b.getLength() and this->getBreadth() == b.getBreadth()) { return true; }
+    else { return false; }
+}
 
 int main()
 {
