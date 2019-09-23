@@ -47,7 +47,7 @@ public:
     long calculateVolume() { return l*b*h; }
     
     bool operator<(Box& b);
-    ostream& operator<<(ostream& out) { out << this->getLength() << " " << this->getBreadth() << " " << this->getHeight(); return out;}
+    friend ostream& operator<<(ostream& out, Box b);
     
 };
 
@@ -56,6 +56,11 @@ bool Box::operator<(Box& b) {
     else if (this->getBreadth() < b.getBreadth() and this->getLength() == b.getLength()) { return true; }
     else if (this->getHeight() < b.getHeight() and this->getLength() == b.getLength() and this->getBreadth() == b.getBreadth()) { return true; }
     else { return false; }
+}
+
+ostream& operator<<(ostream& out, Box b) {
+    out << b.getLength() << " " << b.getBreadth() << " " << b.getHeight();
+    return out;
 }
 
 int main()
