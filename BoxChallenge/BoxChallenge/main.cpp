@@ -44,7 +44,7 @@ public:
     int getBreadth() { return b; }
     int getHeight() { return h; }
     
-    long long CalculateVolume() { long long r; r = l*b*h; return r;  }
+    long long CalculateVolume() { long x=l, y=b, z=h; return x*y*z; }
     
     bool operator<(Box& b);
     friend ostream& operator<<(ostream& out, Box b);
@@ -68,4 +68,5 @@ int main()
     Box temp = Box(1039, 3749, 8473);
     cout << temp << endl;
     cout << temp.CalculateVolume() << endl;
+    cout << 1039*3749*8473;
 }
